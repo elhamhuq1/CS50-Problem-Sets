@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <math.h>
+
+int main(void)
+{
+    float change;
+    //prompt the user
+    do
+    {
+        change = get_float("Change: ");
+    }
+    while (change < 0);
+    
+    //rounds
+    int cents = round(change * 100);
+    
+    int coins = 0;
+    
+    //initialization of coins
+    int quarter = 25;
+    int dime = 10;
+    int nickel = 5;
+    int penny = 1;
+    
+    
+    //greedy algorithm
+    while (cents - quarter >= 0)
+    {
+        coins = coins + 1;
+        cents = cents - quarter;
+    }
+    
+    while (cents - dime >= 0)
+    {
+        coins = coins + 1;
+        cents = cents - dime;
+    }
+   
+    while (cents - nickel >= 0)
+    {
+        coins = coins + 1;
+        cents = cents - nickel;
+    }
+    
+    while (cents - penny >= 0)
+    {
+        coins = coins + 1;
+        cents = cents - penny;
+    }
+    printf("%i\n", coins);
+    
+}
